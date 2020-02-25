@@ -1,32 +1,38 @@
+
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 
-var board = { cells: [{}, {}, {}, {}, {}, {}, {}, {}, {}], }
-board = {
+//var board = { cells: [{}, {}, {}, {}, {}, {}, {}, {}, {}], }
+ var board = {
   cells: [
-  { row: 0, col: 0, isMine: "", hidden: "true", }, 
-  { row: 0, col: 1, isMine: "", hidden: "true", },
-  { row: 0, col: 2, isMine: "", hidden: "true", },
-  { row: 1, col: 0, isMine: "", hidden: "true", },
-  { row: 1, col: 1, isMine: "", hidden: "true", },
-  { row: 1, col: 2, isMine: "", hidden: "true", },
-  { row: 2, col: 0, isMine: "", hidden: "true", },
-  { row: 2, col: 1, isMine: "", hidden: "true", }, 
-  { row: 2, col: 2, isMine: "", hidden: "true", }
+  { row: 0, col: 0, isMine: true, hidden: true, }, 
+  { row: 0, col: 1, isMine: true,  hidden: true, },
+  { row: 0, col: 2, isMine: true, hidden: true, },
+  { row: 1, col: 0, isMine: true, hidden: true, },
+  { row: 1, col: 1, isMine: true,  hidden: true, },
+  { row: 1, col: 2, isMine: true,  hidden: true, },
+  { row: 2, col: 0, isMine: false, hidden: true, },
+  { row: 2, col: 1, isMine: true,  hidden: true, }, 
+  { row: 2, col: 2, isMine: true,  hidden: true, },
 ]
 
 }
-board.cells[3].surroundingMines = 0
+
 
 function startGame() {
   // Don't remove this function call: it makes the game work!
-  for (i = 0; i > board.cells.length ; i++){
-   board.cells[i].surroundingMines = 0
-   console.log (board)
-   board.cells[i][surroundingMines] = countSurroundingMines(board.cells[i])
+
+  for (let i = 0; i < board.cells.length ; i++){
+    
+  
+  board.cells[i].surroundingMines = ""
+   let count = countSurroundingMines(board.cells[i])
+   console.log(i + ": " + count)
+    board.cells[i].surroundingMines = count
    
   }
+  // console.log (board.cells)
   lib.initBoard()
 }
 
@@ -53,16 +59,18 @@ function checkForWin() {
 function countSurroundingMines(cell) {
 
   //function will get the number of cells surrounding current cell
-  var surrounding = lib.getSurroundingCells(cells.row, cells.col)
+ 
+  var surrounding = lib.getSurroundingCells(cell.row, cell.col)
   var count = 0
+  
 // then check each of them to see if it has a mine
-for (i = 0; i > surrounding.length; i++) {
-  if (isMine === true){
+for (i = 0; i < surrounding.length; i++) {
+  
+  if (surrounding[i].isMine === true){
     count++
-  }  
-  return count
-}
-console.log(count)
+} }
+
+return count
 //if they do increment the mine tally
 
 //return the final tally
