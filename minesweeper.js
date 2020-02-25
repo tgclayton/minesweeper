@@ -1,18 +1,35 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-//var board = {cells: [{row:o},{row:1,},{row:2,},{row:3,},{row:4,},{row:5,},{row:6,},{row:7,},{row:8,}],}
+
 var board = { cells: [{}, {}, {}, {}, {}, {}, {}, {}, {}], }
 board = {
-  cells: [{ row: 0, col: 0, isMine: "", hidden: "true", }, { row: 0, col: 1, isMine: "", hidden: "true", },
-  { row: 0, col: 2, isMine: "", hidden: "true", }, { row: 1, col: 0, isMine: "", hidden: "true", },
-  { row: 1, col: 1, isMine: "", hidden: "true", }, { row: 1, col: 2, isMine: "", hidden: "true", },
-  { row: 2, col: 0, isMine: "", hidden: "true", }, { row: 2, col: 1, isMine: "", hidden: "true", }, { row: 2, col: 2, isMine: "", hidden: "ytrue", }],
+  cells: [
+  { row: 0, col: 0, isMine: "", hidden: "true", }, 
+  { row: 0, col: 1, isMine: "", hidden: "true", },
+  { row: 0, col: 2, isMine: "", hidden: "true", },
+  { row: 1, col: 0, isMine: "", hidden: "true", },
+  { row: 1, col: 1, isMine: "", hidden: "true", },
+  { row: 1, col: 2, isMine: "", hidden: "true", },
+  { row: 2, col: 0, isMine: "", hidden: "true", },
+  { row: 2, col: 1, isMine: "", hidden: "true", }, 
+  { row: 2, col: 2, isMine: "", hidden: "true", }
+]
+
 }
+board.cells[3].surroundingMines = 0
+
 function startGame() {
   // Don't remove this function call: it makes the game work!
+  for (i = 0; i > board.cells.length ; i++){
+   board.cells[i].surroundingMines = 0
+   console.log (board)
+   board.cells[i][surroundingMines] = countSurroundingMines(board.cells[i])
+   
+  }
   lib.initBoard()
 }
+
 
 // Define this function to look for a win condition:
 //
@@ -34,5 +51,20 @@ function checkForWin() {
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines(cell) {
-}
 
+  //function will get the number of cells surrounding current cell
+  var surrounding = lib.getSurroundingCells(cells.row, cells.col)
+  var count = 0
+// then check each of them to see if it has a mine
+for (i = 0; i > surrounding.length; i++) {
+  if (isMine === true){
+    count++
+  }  
+  return count
+}
+console.log(count)
+//if they do increment the mine tally
+
+//return the final tally
+}
+//console.log(lib.getSurroundingCells (board.cells[0]))
