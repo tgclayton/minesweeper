@@ -24,6 +24,10 @@ createBoard(5) //builds the initial board
 
 function newGame(size) { //starts a new game
   window['hasWon'] = false
+  boom.pause();
+  boom.currentTime = 0;
+  cheer.pause();
+  cheer.currentTime = 0;
   // console.log(hasWon)
   if (size === "reset") {
     let old = document.getElementsByClassName('cell');
@@ -34,6 +38,7 @@ function newGame(size) { //starts a new game
     createBoard(oldSize)
     startGame()
   } else {
+
     clearBoard()
     createBoard(size)
     startGame()
