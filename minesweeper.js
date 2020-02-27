@@ -23,11 +23,13 @@ createBoard(5) //builds the initial board
   }
 
 function newGame(size) { //starts a new game
+  window['hasWon'] = false
+  // console.log(hasWon)
   if (size === "reset") {
     let old = document.getElementsByClassName('cell');
-    console.log(old)
+    // console.log(old)
     oldSize = Math.sqrt(old.length)
-    console.log(oldSize)
+    // console.log(oldSize)
     clearBoard()
     createBoard(oldSize)
     startGame()
@@ -63,6 +65,9 @@ function startGame() {
 function checkForWin() {
 
   for (i = 0; i < board.cells.length; i++) {
+    if (hasWon === true){
+      return
+    }
     if (board.cells[i].isMine === true) {
       if (board.cells[i].isMarked === false) {
         // console.log('mine not marked')
@@ -96,18 +101,12 @@ function countSurroundingMines(cell) {
 
   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
   var count = 0
-
-
   for (i = 0; i < surrounding.length; i++) {
 
     if (surrounding[i].isMine === true) {
       count++
     }
   }
-
   return count
-
-
-
 }
 //console.log(lib.getSurroundingCells (board.cells[0]))
