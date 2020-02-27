@@ -58,3 +58,15 @@ div.hidden:hover {
 div.marked, div.marked:hover {
   background: no-repeat center/60% url("images/mark.svg") deepskyblue;
 }
+
+#size-select {
+  position: relative;
+  display: inline;
+  /* width: 3em;
+  right: 5em; */
+  
+}
+
+.selector-button{
+  margin: 3px, 2px;
+}

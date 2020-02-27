@@ -8,17 +8,21 @@
     <script src="minesweeper.js"></script>
   </head>
   <body>
+    <!-- <div id="full-page"> -->
     <div id="message"></div>
-    <button onclick="newGame()">Reset</button>
+    <button onclick="newGame('reset')">Reset</button>
+    <br>
+    <div id="size-select">
+      <button class="selector-button" onclick="newGame (3)">3x3</button>
+      <button class="selector-button" onclick="newGame (4)">4x4</button>
+      <button class="selector-button" onclick="newGame (5)">5x5</button>
+      <button class="selector-button" onclick="newGame (6)">6x6</button>
+    </div>
+    <br>
     <div id="notes"></div>
     <div class="board"></div>
-    <div id="size select">
-      <button onclick="">3x3</button>
-      <button onclick="">4x4</button>
-      <button onclick="">5x5</button>
-      <button onclick="">6x6</button>
-    </div>
-
+    
+  </div>
     
   </body>
 </html>
