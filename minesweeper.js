@@ -20,53 +20,31 @@ createBoard(5)
 //   { row: 2, col: 2, isMine: false,  hidden: true, isMarked: false,},
 // ]
 
-
-
-
-
-
-
- 
- 
-
-
-
-
  function createBoard(size /*3,4,5,6*/) {
   board.cells = []
-  
    for (i = 0; i < size * size; i++) {
     board.cells.push({})
     board.cells[i].row= Math.floor(i / size)
     board.cells[i].col = (i % size)
     board.cells[i].hidden = true
     board.cells[i].isMarked = false
-    board.cells[i].isMine = Math.random() >= 0.7
-    
+    board.cells[i].isMine = Math.random() >= 0.62
     } 
-    
-    //setMine ()
   }
 
-  function setRows (size, i){
-  
-    for (i = 0; i < board.cells.length; i++) {
-      board.cells[i].row= Math.floor(i / size)
-    }
+  function newGame (size){ //starts a new game
+  clearBoard()
+  createBoard(size)
+  startGame()
   }
 
- function setCols (size, i) {
-  
- }
-
-  
-
-
-
-
-
-
-
+function clearBoard(){ //removes previous board
+  let field = document.getElementsByClassName('cell');
+  console.log(field)
+  while(field.length > 0) {
+field[0].parentNode.removeChild(field[0]);
+}
+}
 
 function startGame() {
   // Don't remove this function call: it makes the game work!
@@ -79,7 +57,7 @@ function startGame() {
     board.cells[i].surroundingMines = count
 
   }
-  // console.log (board.cells)
+
   lib.initBoard()
 }
 
@@ -91,8 +69,6 @@ function startGame() {
 function checkForWin() {
 
   for (i = 0; i < board.cells.length; i++) {
-    // console.log( i + " is a mine " + board.cells[i].isMine)
-    // console.log(i + " is marked " + board.cells[i].isMarked)
     if (board.cells[i].isMine === true) {
       if (board.cells[i].isMarked === false) {
         console.log('mine not marked')
